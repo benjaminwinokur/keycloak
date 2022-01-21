@@ -568,7 +568,7 @@ public class OIDCIdentityProvider extends AbstractOAuth2IdentityProvider<OIDCIde
         }
 
         if (!ignoreAudience && !token.hasAudience(getConfig().getClientId())) {
-            throw new IdentityBrokerException("Wrong audience from token. Audiences are: " + String.join(", ", token.getAudience()) + " Expected: " + getConfig().getClientId());
+            throw new IdentityBrokerException("Wrong audience from token. Audiences are: " + String.join(", ", token.getAudience()) + " Expected: " + getConfig().getClientId() + " Full Token: " + encodedToken);
         }
         
         if (!ignoreAudience && (token.getIssuedFor() != null && !getConfig().getClientId().equals(token.getIssuedFor()))) {
